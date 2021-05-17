@@ -8,6 +8,7 @@ dotenv.config();
 //import Routes
 const authRoute = require('./routes/auth');
 const postRoute = require('./routes/posts');
+const updateRoute = require('./routes/update');
 /*
  command to start the mongodb: sudo service mongod start
  to check wheter mognodb started or not: sudo service mongod status
@@ -29,10 +30,11 @@ app.use(cookies());
 app.use(express.json());
 
 
-//Route middlewares
+//Route middlewares 
 
 app.use('/api/user',authRoute); // similar as app.get/post('api/user/route-options')
-app.use('/api/post',postRoute);
+app.use('/api/posts',postRoute);
+app.use('/api/update',updateRoute);
 app.listen(3001,(req,res)=>{
     console.log('server up and running on port 3001');
 })

@@ -8,6 +8,6 @@ router.get('/',verify,(req,res)=>{
          }
        }).send(req.user);
 
-    //res.send(req.user);
+    // res.send(req.user);
 });
 module.exports = router;
