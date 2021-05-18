@@ -1,14 +1,15 @@
-const express = require('express');
-const mongoose = require('mongoose');
+const express = require("express");
+const mongoose = require("mongoose");
 const app = express();
-const dotenv = require('dotenv');
+const dotenv = require("dotenv");
 var cookies = require("cookie-parser");
 
 dotenv.config();
 //import Routes
-const authRoute = require('./routes/auth');
-const postRoute = require('./routes/posts');
-const updateRoute = require('./routes/update');
+const registerRoute = require("./routes/users");
+const authRoute = require("./routes/auth");
+const postRoute = require("./routes/posts");
+const updateRoute = require("./routes/update");
 /*
  command to start the mongodb: sudo service mongod start
  to check wheter mognodb started or not: sudo service mongod status
@@ -19,22 +20,26 @@ const updateRoute = require('./routes/update');
 */
 // Connect to DB
 
-mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true,useUnifiedTopology: true }).then(()=>{
+mongoose
+  .connect(process.env.DB_CONNECT, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
     console.log("database is connected");
-}).
-catch(error => console.log(error));
+  })
+  .catch((error) => console.log(error));
 
 //middlewares
 
 app.use(cookies());
 app.use(express.json());
 
-
-//Route middlewares 
-
-app.use('/api/user',authRoute); // similar as app.get/post('api/user/route-options')
-app.use('/api/posts',postRoute);
-app.use('/api/update',updateRoute);
-app.listen(3001,(req,res)=>{
-    console.log('server up and running on port 3001');
-})
+//Route middlewares
+app.use("/api/users", registerRoute);
+app.use("/api/user", authRoute); // similar as app.get/post('api/user/route-options')
+app.use("/api/posts", postRoute);
+app.use("/api/update", updateRoute);
+app.listen(3001, (req, res) => {
+  console.log("server up and running on port 3001");
+});
