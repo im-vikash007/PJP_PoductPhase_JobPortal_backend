@@ -1,7 +1,9 @@
 const mongoose = require("mongoose");
 
 const companyCred = new mongoose.Schema({
- 
+  name:{
+     type:String
+   } ,
   email: {
     type: String,
     required: true,

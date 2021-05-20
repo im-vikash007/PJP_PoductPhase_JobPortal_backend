@@ -30,6 +30,7 @@ router.post("/login", async (req, res) => {
   res.status(200).json({ user: user._id });
 });
 
+//logout
 router.get("/logout", (req, res) => {
   res.cookie("jwt", "", { maxAge: 1 });
   res.send("logout successfully");

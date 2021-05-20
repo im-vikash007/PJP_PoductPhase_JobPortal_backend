@@ -15,7 +15,7 @@ const userDetail = new mongoose.Schema({
     required: true,
   },
   dob: {
-    type: Date,
+    type: String,
     required: true,
   },
   phone: {
@@ -36,10 +36,10 @@ const userDetail = new mongoose.Schema({
         type: String,
       },
       startDate: {
-        type: Date,
+        type: String,
       },
       endDate: {
-        type: Date,
+        type: String,
       },
       degree: {
         type: String,
@@ -67,10 +67,10 @@ const userDetail = new mongoose.Schema({
         type: String,
       },
       startDate: {
-        type: Date,
+        type: String,
       },
       endDate: {
-        type: Date,
+        type: String,
       },
       description: {
         type: String,
@@ -83,10 +83,10 @@ const userDetail = new mongoose.Schema({
         type: String,
       },
       startDate: {
-        type: Date,
+        type: String,
       },
       endDate: {
-        type: Date,
+        type: String,
       },
       description: {
         type: String,
@@ -102,15 +102,15 @@ const userDetail = new mongoose.Schema({
         type: String,
       },
       issueDate: {
-        type: Date,
+        type: String,
       },
       description: {
         type: String,
       },
     },
   ],
-  awards: {
-    type: String,
+  awardsAndAchievement: {
+    type: [String]
   },
   others: {
     relocate: {
