@@ -1,17 +1,13 @@
 const mongoose = require("mongoose");
 
-const userSchema = new mongoose.Schema({
+const userDetail = new mongoose.Schema({
   firstName: {
     type: String,
     rquired: true,
-    min: 6,
-    max: 255,
   },
   lastName: {
     type: String,
     rquired: true,
-    min: 6,
-    max: 255,
   },
   gender: {
     type: String,
@@ -19,31 +15,20 @@ const userSchema = new mongoose.Schema({
     required: true,
   },
   dob: {
-    type: Date,
-    required: true,
-  },
-  email: {
     type: String,
     required: true,
-    max: 255,
-    min: 6,
-  },
-  password: {
-    type: String,
-    required: true,
-    max: 1024,
-    min: 6,
   },
   phone: {
     type: Number,
     required: true,
   },
-  yoe: {
+  yoe: { //year of experience
     type: Number,
     required: true,
   },
   profilePic: {
-    type: String,
+    data: Buffer,
+    contentType: String
   },
   qualificationDetails: [
     {
@@ -51,10 +36,10 @@ const userSchema = new mongoose.Schema({
         type: String,
       },
       startDate: {
-        type: Date,
+        type: String,
       },
       endDate: {
-        type: Date,
+        type: String,
       },
       degree: {
         type: String,
@@ -82,10 +67,10 @@ const userSchema = new mongoose.Schema({
         type: String,
       },
       startDate: {
-        type: Date,
+        type: String,
       },
       endDate: {
-        type: Date,
+        type: String,
       },
       description: {
         type: String,
@@ -98,10 +83,10 @@ const userSchema = new mongoose.Schema({
         type: String,
       },
       startDate: {
-        type: Date,
+        type: String,
       },
       endDate: {
-        type: Date,
+        type: String,
       },
       description: {
         type: String,
@@ -117,15 +102,15 @@ const userSchema = new mongoose.Schema({
         type: String,
       },
       issueDate: {
-        type: Date,
+        type: String,
       },
       description: {
         type: String,
       },
     },
   ],
-  awards: {
-    type: String,
+  awardsAndAchievement: {
+    type: [String]
   },
   others: {
     relocate: {
@@ -144,4 +129,4 @@ const userSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("User", userSchema); // here User: name of collection in database as "users" ,capital letter is converted to lower in name of collection in mongodb
+module.exports = mongoose.model("UserDetail", userDetail); // here User: name of collection in database as "users" ,capital letter is converted to lower in name of collection in mongodb
